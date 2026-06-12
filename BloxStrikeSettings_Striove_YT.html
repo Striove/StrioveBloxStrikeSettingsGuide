@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BloxStrikeSettingsGuide_Striove_YT</title>
+  <style>
+    :root {
+      --bg: #07070f;
+      --surface: #0e0e1a;
+      --surface2: #141422;
+      --surface3: #1a1a2e;
+      --border: #1e1e32;
+      --border-light: #2a2a42;
+      --accent: #00ff87;
+      --accent-dim: rgba(0,255,135,0.1);
+      --accent2: #5bc8f5;
+      --text: #e8e8f2;
+      --text-muted: #55556a;
+      --text-dim: #8888a4;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content:'';
+      position:fixed; inset:0;
+      background-image: radial-gradient(rgba(0,255,135,0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events:none; z-index:0;
+    }
+
+    body::after {
+      content:'';
+      position:fixed; top:-200px; left:50%; transform:translateX(-50%);
+      width:800px; height:400px;
+      background:radial-gradient(ellipse,rgba(0,255,135,0.05) 0%,transparent 70%);
+      pointer-events:none; z-index:0;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position:relative; z-index:1;
+      text-align:center;
+      padding:90px 24px 70px;
+      overflow:hidden;
+    }
+
+    .header-line {
+      position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+      width:600px; height:1px;
+      background:linear-gradient(90deg,transparent,var(--accent),transparent);
+      opacity:0.4;
+    }
+
+    .deco-cross { position:absolute; opacity:0.07; }
+    .deco-cross svg { display:block; }
+
+    .badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--accent-dim);
+      border:1px solid rgba(0,255,135,0.25);
+      color:var(--accent);
+      font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+      padding:7px 18px; border-radius:100px; margin-bottom:28px;
+    }
+
+    .badge::before {
+      content:''; width:6px; height:6px; border-radius:50%;
+      background:var(--accent); animation:blink 2s infinite;
+    }
+
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+    h1 {
+      font-size:clamp(40px,7vw,80px); font-weight:900;
+      letter-spacing:-2px; line-height:1.0; margin-bottom:20px;
+    }
+
+    h1 em { font-style:normal; color:var(--accent); }
+
+    .header-creator {
+      display:inline-flex; align-items:center; gap:10px;
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:100px; padding:10px 20px; margin-bottom:28px;
+    }
+
+    .creator-avatar {
+      width:32px; height:32px; border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),#00a8ff);
+      display:flex; align-items:center; justify-content:center;
+      font-size:13px; font-weight:900; color:#000;
+    }
+
+    .creator-label { font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; }
+    .creator-name  { font-size:15px; font-weight:800; color:var(--text); }
+
+    .header-sub {
+      font-size:16px; color:var(--text-dim);
+      max-width:460px; margin:0 auto 36px; line-height:1.6;
+    }
+
+    .header-stats {
+      display:inline-flex; gap:0;
+      background:var(--surface); border:1px solid var(--border); border-radius:14px; overflow:hidden;
+    }
+
+    .stat { text-align:center; padding:18px 36px; }
+    .stat + .stat { border-left:1px solid var(--border); }
+    .stat-num { font-size:26px; font-weight:800; color:var(--accent); line-height:1; }
+    .stat-label { font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:4px; }
+
+    /* ── NAV ── */
+    nav {
+      position:sticky; top:0; z-index:100;
+      background:rgba(7,7,15,0.92); backdrop-filter:blur(24px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width:1280px; margin:0 auto; padding:0 24px;
+      display:flex; align-items:center; gap:2px;
+    }
+
+    .nav-logo {
+      font-size:14px; font-weight:800; letter-spacing:-0.5px;
+      color:var(--text); margin-right:auto;
+      display:flex; align-items:center; gap:8px;
+    }
+
+    .nav-logo span { color:var(--accent); }
+
+    nav a {
+      color:var(--text-dim); text-decoration:none;
+      font-size:11px; font-weight:600; letter-spacing:0.8px; text-transform:uppercase;
+      padding:18px 14px; border-bottom:2px solid transparent; transition:all 0.2s;
+      white-space:nowrap;
+    }
+
+    nav a:hover { color:var(--accent); border-bottom-color:var(--accent); }
+
+    /* ── MAIN ── */
+    main {
+      position:relative; z-index:1;
+      max-width:1280px; margin:0 auto; padding:70px 24px 90px;
+    }
+
+    section { scroll-margin-top:60px; }
+
+    /* ── SECTION HEADERS ── */
+    .section-header { margin-bottom:44px; }
+
+    .section-eyebrow {
+      font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+      color:var(--accent); margin-bottom:10px;
+      display:flex; align-items:center; gap:10px;
+    }
+
+    .section-eyebrow::before {
+      content:''; display:block; width:20px; height:2px;
+      background:var(--accent); border-radius:2px;
+    }
+
+    .section-title {
+      font-size:clamp(26px,4vw,42px); font-weight:800;
+      letter-spacing:-1px; line-height:1.1;
+    }
+
+    .section-desc { font-size:15px; color:var(--text-dim); margin-top:10px; line-height:1.6; }
+
+    /* ── PLAYER GRID ── */
+    .players-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+      gap:16px;
+    }
+
+    .player-card {
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:18px; overflow:hidden;
+      transition:transform 0.25s cubic-bezier(.2,.8,.3,1), box-shadow 0.25s, border-color 0.25s;
+      cursor:default;
+    }
+
+    .player-card:hover { transform:translateY(-5px); }
+
+    .card-accent-bar { height:3px; width:100%; }
+
+    .card-top {
+      display:flex; align-items:center; gap:18px;
+      padding:20px 20px 14px;
+    }
+
+    .crosshair-preview {
+      position:relative; width:80px; height:80px; border-radius:12px;
+      background:#080810; border:1px solid rgba(255,255,255,0.05);
+      flex-shrink:0; display:flex; align-items:center; justify-content:center; overflow:hidden;
+    }
+
+    .crosshair-preview canvas { display:block; position:relative; z-index:1; }
+
+    .player-meta { flex:1; min-width:0; }
+    .player-name { font-size:21px; font-weight:800; letter-spacing:-0.5px; line-height:1.1; }
+    .player-team { font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:3px; }
+
+    .color-pill {
+      display:inline-flex; align-items:center; gap:7px; margin-top:10px;
+      background:var(--surface2); border:1px solid var(--border);
+      border-radius:100px; padding:4px 10px 4px 4px;
+    }
+
+    .color-dot { width:14px; height:14px; border-radius:50%; border:1px solid rgba(255,255,255,0.15); flex-shrink:0; }
+    .color-text { font-size:11px; font-family:'Courier New',monospace; color:var(--text-dim); }
+
+    .card-settings {
+      display:grid; grid-template-columns:repeat(4,1fr); gap:5px; padding:0 12px 12px;
+    }
+
+    .stat-cell {
+      background:var(--surface2); border:1px solid var(--border);
+      border-radius:9px; padding:8px 10px; text-align:center;
+    }
+
+    .stat-cell.span2 { grid-column:span 2; }
+
+    .sc-label { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-bottom:3px; }
+    .sc-val { font-size:15px; font-weight:800; color:var(--text); }
+    .sc-val.green { color:#00ff87; }
+    .sc-val.red   { color:#ff6b6b; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border:none; height:1px;
+      background:linear-gradient(90deg,transparent,var(--border-light),transparent);
+      margin:80px 0;
+    }
+
+    /* ── STRIOVE HERO CARD ── */
+    .striove-hero {
+      background:var(--surface);
+      border:1px solid rgba(0,255,135,0.25);
+      border-radius:22px; overflow:hidden;
+      margin-bottom:44px;
+      box-shadow:0 0 60px rgba(0,255,135,0.06);
+    }
+
+    .striove-top-bar {
+      background:linear-gradient(135deg,rgba(0,255,135,0.12),rgba(91,200,245,0.06));
+      border-bottom:1px solid rgba(0,255,135,0.15);
+      padding:22px 28px;
+      display:flex; align-items:center; gap:16px;
+    }
+
+    .striove-avatar {
+      width:48px; height:48px; border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),#00a8ff);
+      display:flex; align-items:center; justify-content:center;
+      font-size:18px; font-weight:900; color:#000; flex-shrink:0;
+    }
+
+    .striove-info { flex:1; }
+    .striove-name { font-size:22px; font-weight:900; letter-spacing:-0.5px; }
+    .striove-name span { color:var(--accent); }
+    .striove-sub { font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:2px; }
+
+    .striove-crosshair-showcase {
+      display:flex; align-items:center; gap:28px; padding:28px;
+      flex-wrap:wrap;
+    }
+
+    .crosshair-large {
+      width:120px; height:120px; border-radius:16px;
+      background:#05050d; border:1px solid var(--border);
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0;
+    }
+
+    .crosshair-specs {
+      flex:1; min-width:260px;
+      display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+    }
+
+    .spec-item {
+      background:var(--surface2); border:1px solid var(--border);
+      border-radius:10px; padding:12px; text-align:center;
+    }
+
+    .spec-item.span2 { grid-column:span 2; }
+
+    .spec-label { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-bottom:4px; }
+    .spec-val   { font-size:18px; font-weight:800; }
+    .spec-val.green { color:#00ff87; }
+    .spec-val.red   { color:#ff6b6b; }
+    .spec-val.blue  { color:#5bc8f5; }
+
+    /* ── SETTINGS PANELS ── */
+    .settings-columns { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .settings-columns.three { grid-template-columns:1fr 1fr 1fr; }
+
+    .settings-panel {
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:16px; overflow:hidden;
+    }
+
+    .panel-header {
+      display:flex; align-items:center; gap:10px;
+      padding:16px 20px; background:var(--surface2); border-bottom:1px solid var(--border);
+    }
+
+    .panel-icon {
+      width:28px; height:28px; border-radius:7px;
+      display:flex; align-items:center; justify-content:center;
+      background:var(--accent-dim); flex-shrink:0;
+    }
+
+    .panel-icon svg { width:15px; height:15px; }
+
+    .panel-title {
+      font-size:11px; font-weight:700; text-transform:uppercase;
+      letter-spacing:1.5px; color:var(--accent);
+    }
+
+    .settings-row {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:13px 20px; border-bottom:1px solid var(--border); transition:background 0.15s;
+    }
+
+    .settings-row:last-child { border-bottom:none; }
+    .settings-row:hover { background:var(--surface2); }
+
+    .row-label { font-size:13px; color:var(--text-dim); }
+
+    .row-val { font-size:13px; font-weight:700; }
+    .row-val.on  { color:#00ff87; }
+    .row-val.off { color:#ff6b6b; }
+    .row-val.num {
+      color:#7ba4ff; font-family:'Courier New',monospace; font-size:14px;
+      background:rgba(123,164,255,0.1); border:1px solid rgba(123,164,255,0.2);
+      border-radius:6px; padding:2px 10px;
+    }
+
+    .row-val.tag {
+      color:var(--text-dim); background:var(--surface3); border:1px solid var(--border-light);
+      border-radius:6px; padding:2px 10px; font-size:12px;
+    }
+
+    .sub-header {
+      padding:10px 20px 6px;
+      font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:2px;
+      color:var(--accent2); border-bottom:1px solid var(--border);
+      background:rgba(91,200,245,0.04);
+    }
+
+    .note-card {
+      margin:16px; background:rgba(0,255,135,0.05);
+      border:1px solid rgba(0,255,135,0.18); border-radius:12px;
+      padding:14px 16px; font-size:13px; color:var(--text-dim); line-height:1.65;
+    }
+
+    .note-card strong { color:var(--accent); }
+
+    /* ── CHECKBOX INDICATOR ── */
+    .cb { display:inline-flex; align-items:center; gap:6px; }
+    .cb-box {
+      width:16px; height:16px; border-radius:3px;
+      display:inline-flex; align-items:center; justify-content:center; font-size:10px; flex-shrink:0;
+    }
+    .cb-box.on  { background:#00ff87; color:#000; }
+    .cb-box.off { background:var(--surface3); border:1px solid var(--border-light); }
+
+    /* ── AUDIO SLIDERS ── */
+    .slider-row {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 20px; border-bottom:1px solid var(--border); gap:16px;
+    }
+    .slider-row:last-child { border-bottom:none; }
+    .slider-row:hover { background:var(--surface2); }
+
+    .slider-label { font-size:13px; color:var(--text-dim); flex-shrink:0; min-width:120px; }
+
+    .slider-track {
+      flex:1; height:6px; border-radius:3px;
+      background:var(--surface3); border:1px solid var(--border-light); position:relative; overflow:hidden;
+    }
+
+    .slider-fill { height:100%; border-radius:3px; background:var(--accent); opacity:0.7; }
+
+    .slider-val {
+      font-size:13px; font-weight:700; font-family:'Courier New',monospace;
+      color:var(--accent); min-width:36px; text-align:right;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position:relative; z-index:1;
+      border-top:1px solid var(--border);
+      padding:36px 24px; text-align:center;
+      color:var(--text-muted); font-size:13px;
+    }
+
+    footer strong { color:var(--text-dim); }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px) {
+      .settings-columns, .settings-columns.three { grid-template-columns:1fr; }
+      .players-grid { grid-template-columns:1fr; }
+      .header-stats .stat { padding:16px 20px; }
+      .striove-crosshair-showcase { flex-direction:column; }
+      .community-layout { flex-direction:column; }
+    }
+
+    /* ── COMMUNITY SECTION ── */
+    .community-layout {
+      display:flex; gap:24px; align-items:flex-start; margin-bottom:44px;
+    }
+
+    .community-form-panel {
+      flex:1; min-width:0;
+      background:var(--surface); border:1px solid var(--border); border-radius:18px; overflow:hidden;
+    }
+
+    .community-preview-panel {
+      width:260px; flex-shrink:0;
+      display:flex; flex-direction:column; gap:16px;
+    }
+
+    .preview-canvas-box {
+      background:var(--surface); border:1px solid var(--border); border-radius:18px;
+      padding:28px; display:flex; flex-direction:column; align-items:center; gap:16px;
+    }
+
+    .preview-canvas-wrap {
+      width:160px; height:160px; border-radius:16px;
+      background:#05050d; border:1px solid rgba(255,255,255,0.06);
+      display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden;
+    }
+
+    .preview-canvas-wrap canvas { position:relative; z-index:1; }
+
+    .preview-color-pill {
+      display:flex; align-items:center; gap:8px;
+      background:var(--surface2); border:1px solid var(--border);
+      border-radius:100px; padding:6px 14px;
+      font-size:12px; font-family:'Courier New',monospace; color:var(--text-dim);
+    }
+
+    .preview-color-swatch {
+      width:16px; height:16px; border-radius:4px;
+      border:1px solid rgba(255,255,255,0.15); flex-shrink:0;
+    }
+
+    .submit-btn {
+      width:100%; padding:16px;
+      background:var(--accent); color:#000;
+      font-size:14px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase;
+      border:none; border-radius:12px; cursor:pointer;
+      transition:opacity 0.2s, transform 0.15s;
+    }
+
+    .submit-btn:hover { opacity:0.88; transform:translateY(-1px); }
+    .submit-btn:active { transform:translateY(0); }
+
+    /* Form fields */
+    .form-section {
+      padding:14px 20px 8px;
+      font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:2px;
+      color:var(--accent2); border-bottom:1px solid var(--border);
+      background:rgba(91,200,245,0.04);
+    }
+
+    .form-row {
+      display:flex; align-items:center; gap:12px;
+      padding:11px 20px; border-bottom:1px solid var(--border);
+      transition:background 0.15s;
+    }
+
+    .form-row:last-child { border-bottom:none; }
+    .form-row:hover { background:var(--surface2); }
+
+    .form-label {
+      font-size:12px; color:var(--text-dim); min-width:100px; flex-shrink:0;
+    }
+
+    .form-input {
+      flex:1; background:var(--surface2); border:1px solid var(--border);
+      border-radius:8px; padding:8px 12px; color:var(--text); font-size:13px;
+      outline:none; transition:border-color 0.2s;
+    }
+
+    .form-input:focus { border-color:rgba(0,255,135,0.4); }
+    .form-input::placeholder { color:var(--text-muted); }
+
+    .form-slider-wrap { flex:1; display:flex; align-items:center; gap:10px; }
+
+    .form-slider {
+      flex:1; -webkit-appearance:none; appearance:none;
+      height:5px; border-radius:3px;
+      background:var(--surface3); border:1px solid var(--border-light);
+      outline:none; cursor:pointer;
+    }
+
+    .form-slider::-webkit-slider-thumb {
+      -webkit-appearance:none; width:16px; height:16px;
+      border-radius:50%; background:var(--accent);
+      border:2px solid #000; cursor:pointer; box-shadow:0 0 6px rgba(0,255,135,0.4);
+    }
+
+    .form-slider::-moz-range-thumb {
+      width:16px; height:16px; border-radius:50%;
+      background:var(--accent); border:2px solid #000; cursor:pointer;
+    }
+
+    .form-val {
+      font-size:13px; font-weight:700; font-family:'Courier New',monospace;
+      color:var(--accent); min-width:36px; text-align:right;
+    }
+
+    .form-check {
+      width:20px; height:20px; border-radius:5px; cursor:pointer;
+      -webkit-appearance:none; appearance:none;
+      background:var(--surface3); border:1px solid var(--border-light);
+      display:flex; align-items:center; justify-content:center;
+      transition:background 0.15s, border-color 0.15s; flex-shrink:0;
+    }
+
+    .form-check:checked {
+      background:var(--accent); border-color:var(--accent);
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23000' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat:no-repeat; background-position:center; background-size:10px;
+    }
+
+    /* Community grid */
+    .community-grid {
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px;
+    }
+
+    .community-card {
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:16px; overflow:hidden; position:relative;
+      transition:transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .community-card:hover { transform:translateY(-3px); }
+
+    .delete-btn {
+      position:absolute; top:12px; right:12px;
+      width:26px; height:26px; border-radius:8px;
+      background:rgba(255,107,107,0.12); border:1px solid rgba(255,107,107,0.2);
+      color:#ff6b6b; font-size:14px; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; transition:opacity 0.15s; z-index:10;
+    }
+
+    .community-card:hover .delete-btn { opacity:1; }
+    .delete-btn:hover { background:rgba(255,107,107,0.25); }
+
+    .comm-card-top {
+      display:flex; align-items:center; gap:14px; padding:16px 16px 12px;
+    }
+
+    .comm-crosshair-wrap {
+      width:72px; height:72px; border-radius:10px;
+      background:#05050d; border:1px solid rgba(255,255,255,0.05);
+      flex-shrink:0; display:flex; align-items:center; justify-content:center;
+    }
+
+    .comm-meta { flex:1; min-width:0; }
+
+    .comm-name {
+      font-size:17px; font-weight:800; letter-spacing:-0.3px;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+
+    .comm-team { font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:2px; }
+
+    .comm-color-pill {
+      display:inline-flex; align-items:center; gap:6px; margin-top:8px;
+      background:var(--surface2); border:1px solid var(--border);
+      border-radius:100px; padding:3px 9px 3px 3px;
+    }
+
+    .comm-dot { width:12px; height:12px; border-radius:50%; border:1px solid rgba(255,255,255,0.1); }
+    .comm-rgb { font-size:10px; font-family:'Courier New',monospace; color:var(--text-dim); }
+
+    .comm-stats {
+      display:grid; grid-template-columns:repeat(4,1fr); gap:4px; padding:0 10px 10px;
+    }
+
+    .comm-stat {
+      background:var(--surface2); border:1px solid var(--border);
+      border-radius:8px; padding:7px 8px; text-align:center;
+    }
+
+    .comm-stat-label { font-size:8px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); }
+    .comm-stat-val { font-size:14px; font-weight:800; }
+
+    .empty-community {
+      grid-column:1/-1;
+      background:var(--surface); border:1px dashed var(--border-light);
+      border-radius:18px; padding:60px 24px; text-align:center;
+    }
+
+    .empty-icon { font-size:40px; margin-bottom:14px; opacity:0.4; }
+    .empty-title { font-size:18px; font-weight:700; color:var(--text-dim); margin-bottom:8px; }
+    .empty-sub { font-size:14px; color:var(--text-muted); }
+
+    .community-count {
+      font-size:12px; color:var(--text-muted); margin-bottom:20px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+
+    .clear-btn {
+      font-size:11px; color:#ff6b6b; background:none; border:1px solid rgba(255,107,107,0.2);
+      padding:5px 12px; border-radius:8px; cursor:pointer; transition:background 0.15s;
+    }
+
+    .clear-btn:hover { background:rgba(255,107,107,0.1); }
+
+    .success-toast {
+      position:fixed; bottom:28px; right:28px;
+      background:var(--accent); color:#000;
+      font-size:13px; font-weight:700; padding:14px 22px;
+      border-radius:12px; box-shadow:0 8px 32px rgba(0,255,135,0.35);
+      z-index:9999; transform:translateY(80px); opacity:0;
+      transition:transform 0.35s cubic-bezier(.2,.8,.3,1), opacity 0.3s;
+    }
+
+    .success-toast.show { transform:translateY(0); opacity:1; }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="deco-cross" style="top:20px;left:5%;transform:rotate(15deg)">
+    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+      <line x1="40" y1="0" x2="40" y2="80" stroke="#00ff87" stroke-width="2"/>
+      <line x1="0" y1="40" x2="80" y2="40" stroke="#00ff87" stroke-width="2"/>
+      <circle cx="40" cy="40" r="16" stroke="#00ff87" stroke-width="1.5"/>
+    </svg>
+  </div>
+  <div class="deco-cross" style="bottom:20px;right:5%;transform:rotate(-10deg)">
+    <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+      <line x1="30" y1="0" x2="30" y2="60" stroke="#00ff87" stroke-width="1.5"/>
+      <line x1="0" y1="30" x2="60" y2="30" stroke="#00ff87" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <div class="badge">Blox Strike Settings Guide</div>
+
+  <div class="header-creator">
+    <div class="creator-avatar">S</div>
+    <div>
+      <div class="creator-label">Guide by</div>
+      <div class="creator-name">Striove_YT</div>
+    </div>
+  </div>
+
+  <h1>Crosshairs &amp;<br><em>Settings Guide</em></h1>
+  <p class="header-sub">Player crosshair configs and recommended Blox Strike settings — curated by Striove_YT.</p>
+
+  <div class="header-stats">
+    <div class="stat">
+      <div class="stat-num">9</div>
+      <div class="stat-label">Players</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Teams</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Setting Sections</div>
+    </div>
+  </div>
+
+  <div class="header-line"></div>
+</header>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">⊕ <span>Blox Strike</span> Guide</div>
+    <a href="#crosshairs">Crosshairs</a>
+    <a href="#mystuff">Striove_YT</a>
+    <a href="#audio">Audio</a>
+    <a href="#video">Video</a>
+    <a href="#game">Game</a>
+    <a href="#community">Community</a>
+  </div>
+</nav>
+
+<!-- ── MAIN ── -->
+<main>
+
+  <!-- ── CROSSHAIRS SECTION ── -->
+  <section id="crosshairs">
+    <div class="section-header">
+      <div class="section-eyebrow">Player Configs</div>
+      <h2 class="section-title">Crosshair Settings</h2>
+      <p class="section-desc">All crosshairs use Classic Static style with Follow Recoil off and no Outline.</p>
+    </div>
+    <div class="players-grid" id="grid"></div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── STRIOVE_YT SECTION ── -->
+  <section id="mystuff">
+    <div class="section-header">
+      <div class="section-eyebrow">Striove_YT</div>
+      <h2 class="section-title">My Crosshair</h2>
+      <p class="section-desc">The exact crosshair I use in Blox Strike.</p>
+    </div>
+
+    <div class="striove-hero">
+      <div class="striove-top-bar">
+        <div class="striove-avatar">S</div>
+        <div class="striove-info">
+          <div class="striove-name"><span>Striove</span>_YT</div>
+          <div class="striove-sub">Content Creator · Blox Strike</div>
+        </div>
+      </div>
+      <div class="striove-crosshair-showcase">
+        <div class="crosshair-large">
+          <canvas id="striove-ch"></canvas>
+        </div>
+        <div class="crosshair-specs">
+          <div class="spec-item">
+            <div class="spec-label">Length</div>
+            <div class="spec-val">1</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Thickness</div>
+            <div class="spec-val">1</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Gap</div>
+            <div class="spec-val">-3</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Outline</div>
+            <div class="spec-val blue">1</div>
+          </div>
+          <div class="spec-item span2">
+            <div class="spec-label">Color RGB</div>
+            <div class="spec-val" style="font-size:14px;display:flex;align-items:center;gap:8px;justify-content:center">
+              <div style="width:16px;height:16px;border-radius:4px;background:rgb(0,56,51);border:1px solid rgba(255,255,255,0.2)"></div>
+              rgb(0, 56, 51)
+            </div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Alpha</div>
+            <div class="spec-val">200</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">T Style</div>
+            <div class="spec-val red">No</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── AUDIO SECTION ── -->
+  <section id="audio">
+    <div class="section-header">
+      <div class="section-eyebrow">Striove_YT · Audio Tab</div>
+      <h2 class="section-title">Audio Settings</h2>
+      <p class="section-desc">Volume levels configured for maximum situational awareness — enemy footsteps and gunfire above everything else.</p>
+    </div>
+
+    <div class="settings-columns">
+      <div>
+        <div class="settings-panel">
+          <div class="panel-header">
+            <div class="panel-icon">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M8 2L4 6H1v4h3l4 4V2z" stroke="#00ff87" stroke-width="1.4" stroke-linejoin="round"/><path d="M11 5a4 4 0 010 6" stroke="#00ff87" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div class="panel-title">Audio</div>
+          </div>
+          <div class="slider-row">
+            <div class="slider-label">Master Volume</div>
+            <div class="slider-track"><div class="slider-fill" style="width:100%"></div></div>
+            <div class="slider-val">100</div>
+          </div>
+          <div class="slider-row">
+            <div class="slider-label">Menu Ambience</div>
+            <div class="slider-track"><div class="slider-fill" style="width:0%"></div></div>
+            <div class="slider-val">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="settings-panel">
+          <div class="panel-header">
+            <div class="panel-icon">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M2 6h2l2-3 2 6 2-3h4" stroke="#00ff87" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="panel-title">Music</div>
+          </div>
+          <div class="slider-row">
+            <div class="slider-label">Main Menu</div>
+            <div class="slider-track"><div class="slider-fill" style="width:50%"></div></div>
+            <div class="slider-val">50</div>
+          </div>
+          <div class="slider-row">
+            <div class="slider-label">Round Start</div>
+            <div class="slider-track"><div class="slider-fill" style="width:50%"></div></div>
+            <div class="slider-val">50</div>
+          </div>
+          <div class="slider-row">
+            <div class="slider-label">Round Action</div>
+            <div class="slider-track"><div class="slider-fill" style="width:50%"></div></div>
+            <div class="slider-val">50</div>
+          </div>
+          <div class="slider-row">
+            <div class="slider-label">Round End</div>
+            <div class="slider-track"><div class="slider-fill" style="width:50%"></div></div>
+            <div class="slider-val">50</div>
+          </div>
+          <div class="slider-row">
+            <div class="slider-label">MVP Volume</div>
+            <div class="slider-track"><div class="slider-fill" style="width:50%"></div></div>
+            <div class="slider-val">50</div>
+          </div>
+          <div class="slider-row">
+            <div class="slider-label">Bomb/Hostage</div>
+            <div class="slider-track"><div class="slider-fill" style="width:50%"></div></div>
+            <div class="slider-val">50</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-panel" style="margin-top:20px">
+      <div class="panel-header">
+        <div class="panel-icon">
+          <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#00ff87" stroke-width="1.4"/><path d="M6 6c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2v2" stroke="#00ff87" stroke-width="1.4" stroke-linecap="round"/><circle cx="8" cy="13" r="0.8" fill="#00ff87"/></svg>
+        </div>
+        <div class="panel-title">Voice Chat</div>
+      </div>
+      <div class="settings-row">
+        <div class="row-label">Voice Chat Activation Mode</div>
+        <div class="row-val tag">Disabled</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── VIDEO SECTION ── -->
+  <section id="video">
+    <div class="section-header">
+      <div class="section-eyebrow">Striove_YT · Video Tab</div>
+      <h2 class="section-title">Video Settings</h2>
+      <p class="section-desc">Visual presets disabled for cleaner performance and less screen clutter.</p>
+    </div>
+
+    <div class="settings-panel" style="max-width:600px">
+      <div class="panel-header">
+        <div class="panel-icon">
+          <svg viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="#00ff87" stroke-width="1.4"/><path d="M5 13v2M11 13v2M3 15h10" stroke="#00ff87" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <div class="panel-title">Presets</div>
+      </div>
+      <div class="settings-row">
+        <div class="row-label">Global Shadows</div>
+        <div class="cb"><div class="cb-box off"></div> <span class="row-val off">Off</span></div>
+      </div>
+      <div class="settings-row">
+        <div class="row-label">Glass Shatter</div>
+        <div class="cb"><div class="cb-box off"></div> <span class="row-val off">Off</span></div>
+      </div>
+      <div class="settings-row">
+        <div class="row-label">First Person Tracers</div>
+        <div class="cb"><div class="cb-box off"></div> <span class="row-val off">Off</span></div>
+      </div>
+      <div class="settings-row">
+        <div class="row-label">Muzzle Flash</div>
+        <div class="cb"><div class="cb-box off"></div> <span class="row-val off">Off</span></div>
+      </div>
+      <div class="settings-row">
+        <div class="row-label">Ragdolls</div>
+        <div class="cb"><div class="cb-box off"></div> <span class="row-val off">Off</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── GAME SECTION ── -->
+  <section id="game">
+    <div class="section-header">
+      <div class="section-eyebrow">Striove_YT · Game Tab</div>
+      <h2 class="section-title">Game Settings</h2>
+      <p class="section-desc">Item behaviour, HUD configuration, and viewmodel positioning.</p>
+    </div>
+
+    <div class="settings-columns" style="margin-bottom:20px">
+      <!-- Item -->
+      <div class="settings-panel">
+        <div class="panel-header">
+          <div class="panel-icon">
+            <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="5" width="12" height="9" rx="1" stroke="#00ff87" stroke-width="1.4"/><path d="M5 5V4a3 3 0 016 0v1" stroke="#00ff87" stroke-width="1.4"/></svg>
+          </div>
+          <div class="panel-title">Item</div>
+        </div>
+        <div class="settings-row">
+          <div class="row-label">Auto Re-Zoom Sniper after Shot</div>
+          <div class="cb"><div class="cb-box on">✓</div> <span class="row-val on">On</span></div>
+        </div>
+        <div class="settings-row">
+          <div class="row-label">Detach Silencer (M4A1-S / USP-S)</div>
+          <div class="cb"><div class="cb-box off"></div> <span class="row-val off">Off</span></div>
+        </div>
+        <div class="settings-row">
+          <div class="row-label">Always Show Inventory</div>
+          <div class="cb"><div class="cb-box on">✓</div> <span class="row-val on">On</span></div>
+        </div>
+        <div class="settings-row">
+          <div class="row-label">Auto Pickup Dropped Weapons</div>
+          <div class="cb"><div class="cb-box on">✓</div> <span class="row-val on">On</span></div>
+        </div>
+      </div>
+
+      <!-- HUD -->
+      <div class="settings-panel">
+        <div class="panel-header">
+          <div class="panel-icon">
+            <svg viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="#00ff87" stroke-width="1.4"/><rect x="4" y="4" width="3" height="3" fill="#00ff87" opacity=".5"/><rect x="9" y="4" width="3" height="3" fill="#00ff87" opacity=".5"/><rect x="4" y="9" width="3" height="3" fill="#00ff87" opacity=".5"/></svg>
+          </div>
+          <div class="panel-title">HUD</div>
+        </div>
+        <div class="settings-row">
+          <div class="row-label">Scale</div>
+          <div class="row-val num">0.7</div>
+        </div>
+        <div class="settings-row">
+          <div class="row-label">Color</div>
+          <div class="row-val tag">White</div>
+        </div>
+        <div class="settings-row">
+          <div class="row-label">Player Pings</div>
+          <div class="row-val tag" style="font-size:11px">Display + Play Sound</div>
+        </div>
+        <div class="settings-row">
+          <div class="row-label">Glow Weapon with Rarity Color</div>
+          <div class="cb"><div class="cb-box on">✓</div> <span class="row-val on">On</span></div>
+        </div>
+        <div class="settings-row">
+          <div class="row-label">System Chat Messages</div>
+          <div class="cb"><div class="cb-box on">✓</div> <span class="row-val on">On</span></div>
+        </div>
+        <div class="settings-row">
+          <div class="row-label">Enable Game Instructor Messages</div>
+          <div class="cb"><div class="cb-box off"></div> <span class="row-val off">Off</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crosshair / Viewmodel -->
+    <div class="settings-columns">
+      <div class="settings-panel">
+        <div class="panel-header">
+          <div class="panel-icon">
+            <svg viewBox="0 0 16 16" fill="none"><line x1="8" y1="1" x2="8" y2="15" stroke="#00ff87" stroke-width="1.5"/><line x1="1" y1="8" x2="15" y2="8" stroke="#00ff87" stroke-width="1.5"/><circle cx="8" cy="8" r="3" stroke="#00ff87" stroke-width="1"/></svg>
+          </div>
+          <div class="panel-title">Crosshair</div>
+        </div>
+        <div class="settings-row"><div class="row-label">Length</div><div class="row-val num">1</div></div>
+        <div class="settings-row"><div class="row-label">Thickness</div><div class="row-val num">1</div></div>
+        <div class="settings-row"><div class="row-label">Gap</div><div class="row-val num">-3</div></div>
+        <div class="settings-row"><div class="row-label">Outline</div><div class="row-val num">1</div></div>
+        <div class="settings-row"><div class="row-label">Red</div><div class="row-val num">0</div></div>
+        <div class="settings-row"><div class="row-label">Green</div><div class="row-val num">56</div></div>
+        <div class="settings-row"><div class="row-label">Blue</div><div class="row-val num">51</div></div>
+        <div class="settings-row"><div class="row-label">Alpha</div><div class="row-val num">200</div></div>
+        <div class="settings-row"><div class="row-label">T Style</div><div class="cb"><div class="cb-box off"></div><span class="row-val off">Off</span></div></div>
+        <div class="settings-row"><div class="row-label">Show Player Crosshairs</div><div class="cb"><div class="cb-box off"></div><span class="row-val off">Off</span></div></div>
+      </div>
+
+      <div class="settings-panel">
+        <div class="panel-header">
+          <div class="panel-icon">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M2 12L6 4l2 4 2-2 4 6" stroke="#00ff87" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="panel-title">Viewmodel</div>
+        </div>
+        <div class="settings-row"><div class="row-label">X Offset</div><div class="row-val num">8.2</div></div>
+        <div class="settings-row"><div class="row-label">Y Offset</div><div class="row-val num">-3.6</div></div>
+        <div class="settings-row"><div class="row-label">Z Offset</div><div class="row-val num">-3.7</div></div>
+
+        <div class="note-card">
+          <strong>Tip:</strong> These viewmodel offsets shift the weapon model so it doesn't block your vision. Adjust to taste — these are Striove_YT's personal values.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── COMMUNITY SECTION ── -->
+  <section id="community">
+    <div class="section-header">
+      <div class="section-eyebrow">Community</div>
+      <h2 class="section-title">Submit Your Crosshair</h2>
+      <p class="section-desc">Share your crosshair with the community. Adjust each setting and see a live preview before submitting.</p>
+    </div>
+
+    <div class="community-layout">
+      <!-- Form -->
+      <div class="community-form-panel">
+
+        <div class="form-section">Player Info</div>
+        <div class="form-row">
+          <div class="form-label">Username</div>
+          <input class="form-input" id="fName" type="text" placeholder="Your name or IGN" maxlength="24">
+        </div>
+        <div class="form-row">
+          <div class="form-label">Team / Tag</div>
+          <input class="form-input" id="fTeam" type="text" placeholder="Team or rank (optional)" maxlength="20">
+        </div>
+
+        <div class="form-section">Shape</div>
+        <div class="form-row">
+          <div class="form-label">Length</div>
+          <div class="form-slider-wrap">
+            <input class="form-slider" id="fLength" type="range" min="1" max="6" step="1" value="2">
+            <span class="form-val" id="fLengthVal">2</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-label">Thickness</div>
+          <div class="form-slider-wrap">
+            <input class="form-slider" id="fThick" type="range" min="1" max="4" step="0.5" value="1">
+            <span class="form-val" id="fThickVal">1</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-label">Gap</div>
+          <div class="form-slider-wrap">
+            <input class="form-slider" id="fGap" type="range" min="-8" max="6" step="1" value="-3">
+            <span class="form-val" id="fGapVal">-3</span>
+          </div>
+        </div>
+
+        <div class="form-section">Colour</div>
+        <div class="form-row">
+          <div class="form-label">Red</div>
+          <div class="form-slider-wrap">
+            <input class="form-slider" id="fR" type="range" min="0" max="255" step="1" value="0" style="--thumb:#f55">
+            <span class="form-val" id="fRVal">0</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-label">Green</div>
+          <div class="form-slider-wrap">
+            <input class="form-slider" id="fG" type="range" min="0" max="255" step="1" value="255">
+            <span class="form-val" id="fGVal">255</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-label">Blue</div>
+          <div class="form-slider-wrap">
+            <input class="form-slider" id="fB" type="range" min="0" max="255" step="1" value="135">
+            <span class="form-val" id="fBVal">135</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-label">Alpha</div>
+          <div class="form-slider-wrap">
+            <input class="form-slider" id="fAlpha" type="range" min="50" max="255" step="5" value="255">
+            <span class="form-val" id="fAlphaVal">255</span>
+          </div>
+        </div>
+
+        <div class="form-section">Options</div>
+        <div class="form-row">
+          <div class="form-label">Center Dot</div>
+          <input class="form-check" id="fCenterDot" type="checkbox">
+        </div>
+        <div class="form-row">
+          <div class="form-label">Outline</div>
+          <input class="form-check" id="fOutline" type="checkbox">
+        </div>
+        <div class="form-row">
+          <div class="form-label">T Style</div>
+          <input class="form-check" id="fTStyle" type="checkbox">
+        </div>
+
+      </div><!-- /form panel -->
+
+      <!-- Preview -->
+      <div class="community-preview-panel">
+        <div class="preview-canvas-box">
+          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);align-self:flex-start">Live Preview</div>
+          <div class="preview-canvas-wrap">
+            <canvas id="previewCanvas"></canvas>
+          </div>
+          <div class="preview-color-pill">
+            <div class="preview-color-swatch" id="previewSwatch"></div>
+            <span id="previewRGB">rgb(0, 255, 135)</span>
+          </div>
+        </div>
+        <button class="submit-btn" id="submitBtn">⊕ &nbsp;Add to Community</button>
+      </div>
+    </div>
+
+    <!-- Community grid -->
+    <div class="community-count">
+      <span id="communityCountLabel">0 crosshairs shared</span>
+      <button class="clear-btn" id="clearAllBtn">Clear All</button>
+    </div>
+    <div class="community-grid" id="communityGrid"></div>
+  </section>
+
+</main>
+
+<!-- Toast -->
+<div class="success-toast" id="toast">✓ &nbsp;Crosshair added!</div>
+
+<footer>
+  <strong>Blox Strike Settings Guide</strong> &nbsp;·&nbsp; By <strong>Striove_YT</strong> &nbsp;·&nbsp; For YouTube Reference
+</footer>
+
+<script>
+/* ── Player data ─────────────────────────────── */
+const players = [
+  { name:"NiKo",      team:"Falcons",       length:1, thickness:1, gap:-4, r:0,   g:255, b:145, alpha:255, centerDot:false, tStyle:false, outline:false },
+  { name:"kyousuke",  team:"Falcons",       length:1, thickness:1, gap:-4, r:255, g:255, b:0,   alpha:255, centerDot:false, tStyle:false, outline:false },
+  { name:"Twistzz",   team:"FaZe",          length:2, thickness:1, gap:-5, r:0,   g:255, b:135, alpha:255, centerDot:false, tStyle:false, outline:false },
+  { name:"donk",      team:"Spirit",        length:1, thickness:1, gap:-3, r:0,   g:255, b:0,   alpha:255, centerDot:true,  tStyle:false, outline:false },
+  { name:"ZywOo",     team:"Vitality",      length:1, thickness:1, gap:-3, r:0,   g:255, b:255, alpha:255, centerDot:false, tStyle:false, outline:false },
+  { name:"m0NESY",    team:"Falcons",       length:1, thickness:1, gap:-4, r:0,   g:255, b:255, alpha:255, centerDot:false, tStyle:false, outline:false },
+  { name:"XANTARES",  team:"Aurora",        length:3, thickness:1, gap:0,  r:50,  g:255, b:0,   alpha:200, centerDot:false, tStyle:false, outline:false },
+  { name:"w0nderful", team:"Natus Vincere", length:1, thickness:1, gap:-4, r:255, g:255, b:0,   alpha:255, centerDot:false, tStyle:false, outline:false },
+  { name:"KSCERATO",  team:"FURIA",         length:2, thickness:1, gap:-3, r:0,   g:255, b:0,   alpha:255, centerDot:false, tStyle:false, outline:false },
+];
+
+const striove = { length:1, thickness:1, gap:-3, r:0, g:56, b:51, alpha:200, centerDot:false, tStyle:false, outline:true, outlineVal:1 };
+
+/* ── Crosshair renderer ──────────────────────── */
+function drawCrosshair(canvas, p, size=80) {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width  = size * dpr;
+  canvas.height = size * dpr;
+  canvas.style.width  = size + 'px';
+  canvas.style.height = size + 'px';
+
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  const cx = size / 2, cy = size / 2;
+  const scale = size === 80 ? 8 : 13;
+
+  const armLen   = p.length * scale;
+  const innerGap = Math.max(0, p.gap) * scale;
+  const thick    = Math.max(p.thickness * (size === 80 ? 1.8 : 2.5), 2);
+  const color    = `rgb(${p.r},${p.g},${p.b})`;
+
+  // Background
+  ctx.fillStyle = '#05050d';
+  ctx.fillRect(0, 0, size, size);
+
+  // Scanlines
+  for (let y = 0; y < size; y += 4) {
+    ctx.fillStyle = 'rgba(0,0,0,0.15)';
+    ctx.fillRect(0, y, size, 2);
+  }
+
+  const line = (x1,y1,x2,y2,lw,col,alp) => {
+    ctx.globalAlpha = alp;
+    ctx.strokeStyle = col;
+    ctx.lineWidth   = lw;
+    ctx.lineCap     = 'square';
+    ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+  };
+
+  // Outline pass (black, thicker)
+  if (p.outline) {
+    const ot = thick + (p.outlineVal || 1) * 2;
+    line(cx+innerGap, cy, cx+innerGap+armLen, cy,  ot, '#000', 0.9);
+    line(cx-innerGap, cy, cx-innerGap-armLen, cy,  ot, '#000', 0.9);
+    if (!p.tStyle) line(cx, cy-innerGap, cx, cy-innerGap-armLen, ot, '#000', 0.9);
+    line(cx, cy+innerGap, cx, cy+innerGap+armLen,  ot, '#000', 0.9);
+  }
+
+  // Colour pass
+  const a = p.alpha / 255;
+  line(cx+innerGap, cy, cx+innerGap+armLen, cy,  thick, color, a);
+  line(cx-innerGap, cy, cx-innerGap-armLen, cy,  thick, color, a);
+  if (!p.tStyle) line(cx, cy-innerGap, cx, cy-innerGap-armLen, thick, color, a);
+  line(cx, cy+innerGap, cx, cy+innerGap+armLen,  thick, color, a);
+
+  if (p.centerDot) {
+    ctx.globalAlpha = a;
+    ctx.fillStyle   = color;
+    ctx.beginPath();
+    ctx.arc(cx, cy, thick * 0.9, 0, Math.PI*2);
+    ctx.fill();
+  }
+
+  ctx.globalAlpha = 1;
+}
+
+/* ── Build player card ───────────────────────── */
+function buildCard(p, idx) {
+  const card = document.createElement('div');
+  card.className = 'player-card';
+
+  const rgb  = `rgb(${p.r},${p.g},${p.b})`;
+  const bool = v => v
+    ? `<span class="sc-val green">Yes</span>`
+    : `<span class="sc-val red">No</span>`;
+
+  card.innerHTML = `
+    <div class="card-accent-bar" style="background:linear-gradient(90deg,${rgb},transparent)"></div>
+    <div class="card-top">
+      <div class="crosshair-preview"><canvas id="ch${idx}"></canvas></div>
+      <div class="player-meta">
+        <div class="player-name">${p.name}</div>
+        <div class="player-team">${p.team}</div>
+        <div class="color-pill">
+          <div class="color-dot" style="background:${rgb}"></div>
+          <span class="color-text">rgb(${p.r}, ${p.g}, ${p.b})</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-settings">
+      <div class="stat-cell"><div class="sc-label">Length</div><div class="sc-val">${p.length}</div></div>
+      <div class="stat-cell"><div class="sc-label">Thickness</div><div class="sc-val">${p.thickness}</div></div>
+      <div class="stat-cell"><div class="sc-label">Gap</div><div class="sc-val">${p.gap}</div></div>
+      <div class="stat-cell"><div class="sc-label">Alpha</div><div class="sc-val">${p.alpha}</div></div>
+      <div class="stat-cell span2"><div class="sc-label">Center Dot</div><div>${bool(p.centerDot)}</div></div>
+      <div class="stat-cell span2"><div class="sc-label">Follow Recoil</div><div>${bool(false)}</div></div>
+    </div>
+  `;
+
+  card.addEventListener('mouseenter', () => {
+    card.style.borderColor = `rgba(${p.r},${p.g},${p.b},0.45)`;
+    card.style.boxShadow   = `0 16px 48px rgba(${p.r},${p.g},${p.b},0.12)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.borderColor = '';
+    card.style.boxShadow   = '';
+  });
+
+  return card;
+}
+
+/* ── Init ────────────────────────────────────── */
+const grid = document.getElementById('grid');
+players.forEach((p, i) => {
+  const card = buildCard(p, i);
+  grid.appendChild(card);
+  requestAnimationFrame(() => {
+    const c = document.getElementById(`ch${i}`);
+    if (c) drawCrosshair(c, p, 80);
+  });
+});
+
+// Striove_YT large crosshair
+requestAnimationFrame(() => {
+  const c = document.getElementById('striove-ch');
+  if (c) drawCrosshair(c, striove, 110);
+});
+
+/* ── COMMUNITY ──────────────────────────────── */
+let community = [];
+try { community = JSON.parse(localStorage.getItem('bloxstrike_community') || '[]'); } catch(e){}
+
+function saveCommunity() {
+  try { localStorage.setItem('bloxstrike_community', JSON.stringify(community)); } catch(e){}
+}
+
+function getFormValues() {
+  return {
+    name:      document.getElementById('fName').value.trim() || 'Anonymous',
+    team:      document.getElementById('fTeam').value.trim() || '',
+    length:    parseFloat(document.getElementById('fLength').value),
+    thickness: parseFloat(document.getElementById('fThick').value),
+    gap:       parseInt(document.getElementById('fGap').value),
+    r:         parseInt(document.getElementById('fR').value),
+    g:         parseInt(document.getElementById('fG').value),
+    b:         parseInt(document.getElementById('fB').value),
+    alpha:     parseInt(document.getElementById('fAlpha').value),
+    centerDot: document.getElementById('fCenterDot').checked,
+    outline:   document.getElementById('fOutline').checked,
+    tStyle:    document.getElementById('fTStyle').checked,
+    outlineVal:1,
+    timestamp: Date.now()
+  };
+}
+
+function updateLivePreview() {
+  const p = getFormValues();
+  const c = document.getElementById('previewCanvas');
+  if (c) drawCrosshair(c, p, 150);
+  const rgb = `rgb(${p.r},${p.g},${p.b})`;
+  document.getElementById('previewSwatch').style.background = rgb;
+  document.getElementById('previewRGB').textContent = rgb;
+}
+
+function buildCommunityCard(p, idx) {
+  const card = document.createElement('div');
+  card.className = 'community-card';
+  const rgb = `rgb(${p.r},${p.g},${p.b})`;
+
+  card.innerHTML = `
+    <button class="delete-btn" data-idx="${idx}" title="Remove">✕</button>
+    <div style="height:3px;background:linear-gradient(90deg,${rgb},transparent)"></div>
+    <div class="comm-card-top">
+      <div class="comm-crosshair-wrap"><canvas id="comm-ch${idx}"></canvas></div>
+      <div class="comm-meta">
+        <div class="comm-name">${escHtml(p.name)}</div>
+        ${p.team ? `<div class="comm-team">${escHtml(p.team)}</div>` : ''}
+        <div class="comm-color-pill">
+          <div class="comm-dot" style="background:${rgb}"></div>
+          <span class="comm-rgb">rgb(${p.r}, ${p.g}, ${p.b})</span>
+        </div>
+      </div>
+    </div>
+    <div class="comm-stats">
+      <div class="comm-stat"><div class="comm-stat-label">Length</div><div class="comm-stat-val">${p.length}</div></div>
+      <div class="comm-stat"><div class="comm-stat-label">Thick</div><div class="comm-stat-val">${p.thickness}</div></div>
+      <div class="comm-stat"><div class="comm-stat-label">Gap</div><div class="comm-stat-val">${p.gap}</div></div>
+      <div class="comm-stat"><div class="comm-stat-label">Alpha</div><div class="comm-stat-val">${p.alpha}</div></div>
+    </div>
+  `;
+
+  card.addEventListener('mouseenter', () => {
+    card.style.borderColor = `rgba(${p.r},${p.g},${p.b},0.45)`;
+    card.style.boxShadow   = `0 12px 36px rgba(${p.r},${p.g},${p.b},0.12)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.borderColor = '';
+    card.style.boxShadow   = '';
+  });
+
+  card.querySelector('.delete-btn').addEventListener('click', e => {
+    const i = parseInt(e.currentTarget.dataset.idx);
+    community.splice(i, 1);
+    saveCommunity();
+    renderCommunityGrid();
+  });
+
+  return card;
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderCommunityGrid() {
+  const grid = document.getElementById('communityGrid');
+  const countEl = document.getElementById('communityCountLabel');
+  grid.innerHTML = '';
+  countEl.textContent = community.length === 0
+    ? 'No crosshairs shared yet'
+    : `${community.length} crosshair${community.length !== 1 ? 's' : ''} shared`;
+
+  if (community.length === 0) {
+    grid.innerHTML = `
+      <div class="empty-community">
+        <div class="empty-icon">⊕</div>
+        <div class="empty-title">Be the first to share!</div>
+        <div class="empty-sub">Adjust your settings above and hit "Add to Community".</div>
+      </div>`;
+    return;
+  }
+
+  community.forEach((p, i) => {
+    const card = buildCommunityCard(p, i);
+    grid.appendChild(card);
+    requestAnimationFrame(() => {
+      const c = document.getElementById(`comm-ch${i}`);
+      if (c) drawCrosshair(c, p, 72);
+    });
+  });
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = '✓  ' + msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// Wire up sliders
+['fLength','fThick','fGap','fR','fG','fB','fAlpha'].forEach(id => {
+  const el = document.getElementById(id);
+  const valEl = document.getElementById(id + 'Val');
+  el.addEventListener('input', () => { valEl.textContent = el.value; updateLivePreview(); });
+});
+
+['fCenterDot','fOutline','fTStyle'].forEach(id => {
+  document.getElementById(id).addEventListener('change', updateLivePreview);
+});
+
+document.getElementById('submitBtn').addEventListener('click', () => {
+  const p = getFormValues();
+  community.unshift(p); // newest first
+  saveCommunity();
+  renderCommunityGrid();
+  // Scroll to grid
+  document.getElementById('communityGrid').scrollIntoView({ behavior:'smooth', block:'start' });
+  showToast(`${p.name}'s crosshair added!`);
+});
+
+document.getElementById('clearAllBtn').addEventListener('click', () => {
+  if (community.length === 0) return;
+  if (confirm(`Remove all ${community.length} community crosshair${community.length !== 1 ? 's' : ''}?`)) {
+    community = [];
+    saveCommunity();
+    renderCommunityGrid();
+  }
+});
+
+// Init
+updateLivePreview();
+renderCommunityGrid();
+</script>
+</body>
+</html>
